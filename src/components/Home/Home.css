@@ -1,0 +1,9 @@
+.banner {
+  background-image: url('../../images/banner/banner-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.credit {
+  font-size: 10px;
+}

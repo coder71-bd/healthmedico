@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   const handleLogin = () => {
-    alert('logged in');
+    console.log('logged in');
   };
   const handleLogOut = () => {
-    alert('logged out');
+    console.log('logged out');
   };
 
   const logInBtn = (
@@ -34,7 +34,11 @@ const Header = () => {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand href="#home" className="fst-italic fw-bold text-warning">
+        <Navbar.Brand
+          as={Link}
+          to="/"
+          className="fst-italic fw-bold text-warning"
+        >
           HealthMedico
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -83,6 +87,7 @@ const Header = () => {
             </Nav.Link>
           </Nav>
           <Nav className="mt-lg-0 mt-3 ms-4">{logInBtn}</Nav>
+          <Nav className="mt-lg-0 mt-3 ms-4">{logOutBtn}</Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
