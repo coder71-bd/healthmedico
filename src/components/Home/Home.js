@@ -1,53 +1,17 @@
 import React from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import shop from '../../images/banner/shop.png';
 import Categories from '../Categories/Categories';
+import HomeProducts from '../HomeProducts/HomeProducts';
 import './Home.css';
 
-const Home = () => {
-  //later I will convert it to json
-  const json = {
-    eyeCare: [
-      {
-        id: 1,
-        name: 'random',
-        image: 'demourl',
-        price: 129,
-        desc: 'best eye dropper for eyes',
-        detailDesc:
-          'It is a very convenient product. We are offering it in very low price. You can buy it with discount.',
-        rating: 3,
-        InStock: true,
-      },
-      {
-        id: 1,
-        name: 'random',
-        image: 'demourl',
-        price: 129,
-        desc: 'best eye dropper for eyes',
-        detailDesc:
-          'It is a very convenient product. We are offering it in very low price. You can buy it with discount.',
-        rating: 3,
-        InStock: true,
-      },
-      {
-        id: 1,
-        name: 'random',
-        image: 'demourl',
-        price: 129,
-        desc: 'best eye dropper for eyes',
-        detailDesc:
-          'It is a very convenient product. We are offering it in very low price. You can buy it with discount.',
-        rating: 3,
-        InStock: true,
-      },
-    ],
-  };
-
+const Home = ({ allProduct }) => {
   return (
-    <Container fluid style={{ overflow: 'hidden' }}>
+    <div>
+      {/* banner */}
       <Row className="banner">
+        {/* banner description */}
         <Col
           xs={12}
           lg
@@ -59,6 +23,8 @@ const Home = () => {
             <Button variant="outline-light">Visit Shop</Button>
           </Link>
         </Col>
+
+        {/* banner image */}
         <Col xs={12} lg className="d-flex flex-column">
           <img className="img-fluid" src={shop} alt="shop" />
           <a
@@ -69,8 +35,12 @@ const Home = () => {
           </a>
         </Col>
       </Row>
+
+      {/* categories */}
       <Categories />
-    </Container>
+
+      <HomeProducts allProduct={allProduct} />
+    </div>
   );
 };
 
