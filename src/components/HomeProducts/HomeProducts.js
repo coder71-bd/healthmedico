@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import SingleProduct from '../SingleProduct/SingleProduct';
 
-const HomeProducts = ({ allProduct }) => {
+const HomeProducts = ({ allProduct, handleCart }) => {
   const { wellness, homeo, eye, dental } = allProduct;
   return (
     <div>
@@ -13,7 +13,11 @@ const HomeProducts = ({ allProduct }) => {
           wellness
             .slice(0, 2)
             .map((product) => (
-              <SingleProduct key={product.id} product={product} />
+              <SingleProduct
+                key={product.id}
+                product={product}
+                handleCart={handleCart}
+              />
             ))}
 
         {/* homeo products */}
@@ -21,14 +25,22 @@ const HomeProducts = ({ allProduct }) => {
           homeo
             .slice(0, 2)
             .map((product) => (
-              <SingleProduct key={product.id} product={product} />
+              <SingleProduct
+                key={product.id}
+                product={product}
+                handleCart={handleCart}
+              />
             ))}
         {/* eye products */}
         {eye &&
           eye
             .slice(0, 2)
             .map((product) => (
-              <SingleProduct key={product.id} product={product} />
+              <SingleProduct
+                key={product.id}
+                product={product}
+                handleCart={handleCart}
+              />
             ))}
 
         {/* dental products */}
@@ -36,7 +48,11 @@ const HomeProducts = ({ allProduct }) => {
           dental
             .slice(0, 2)
             .map((product) => (
-              <SingleProduct key={product.id} product={product} />
+              <SingleProduct
+                key={product.id}
+                product={product}
+                handleCart={handleCart}
+              />
             ))}
       </Container>
     </div>

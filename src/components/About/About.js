@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import about from '../../images/about.jpg';
 
 const About = () => {
   return (
@@ -10,7 +11,7 @@ const About = () => {
       <Row className="justify-content-center align-items-center">
         {/* about info */}
         <Col lg={6}>
-          <h3 className="pe-2 text-warning mb-3">About UNIEDUPRO</h3>
+          <h3 className="pe-2 text-warning mb-3">About HealthMedico</h3>
           <p>
             HealthMedico is an online medical store. We provide many healthcare
             related tools and medicine. You can get various kinds of medicine
@@ -22,12 +23,15 @@ const About = () => {
           </p>
         </Col>
         {/* about image */}
-        <Col lg={6} style={{ maxWidth: 500 }}>
-          <img
-            className="img-fluid mx-auto"
-            src="give image link"
-            alt="about"
-          />
+        <Col className="d-flex flex-column" lg={6} style={{ maxWidth: 500 }}>
+          <img className="img-fluid mx-auto" src={about} alt="about" />
+          <a
+            style={{ fontSize: 8 }}
+            href="https://www.vecteezy.com/free-vector/about-us"
+            className="text-center"
+          >
+            About Us Vectors by Vecteezy
+          </a>
         </Col>
       </Row>
     </Container>

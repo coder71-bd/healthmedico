@@ -6,7 +6,7 @@ import Categories from '../Categories/Categories';
 import HomeProducts from '../HomeProducts/HomeProducts';
 import './Home.css';
 
-const Home = ({ allProduct }) => {
+const Home = ({ allProduct, handleCart }) => {
   return (
     <div>
       {/* banner */}
@@ -39,7 +39,7 @@ const Home = ({ allProduct }) => {
       {/* categories */}
       <Categories />
 
-      <HomeProducts allProduct={allProduct} />
+      <HomeProducts allProduct={allProduct} handleCart={handleCart} />
     </div>
   );
 };

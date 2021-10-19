@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 
-const SingleProduct = ({ product }) => {
-  const { name, image, price, short_desc, inStock } = product;
+const SingleProduct = ({ product, handleCart }) => {
+  const { id, name, image, price, short_desc, inStock } = product;
   return (
     <Card style={{ width: '18rem' }} className="m-3">
       <Card.Img variant="top" src={image} className="p-1" />
@@ -21,7 +21,7 @@ const SingleProduct = ({ product }) => {
             <span className="ps-1">See Detail</span>
           </Button>
           {inStock ? (
-            <Button variant="primary">
+            <Button variant="primary" onClick={() => handleCart(id)}>
               <FontAwesomeIcon icon={faCartArrowDown} />
               <span className="ps-2">Add to Cart</span>
             </Button>

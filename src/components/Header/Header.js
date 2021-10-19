@@ -1,13 +1,18 @@
-import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCartPlus,
+  faSignInAlt,
+  faSignOutAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ item }) => {
   const handleLogin = () => {
     console.log('logged in');
   };
+
   const handleLogOut = () => {
     console.log('logged out');
   };
@@ -29,6 +34,7 @@ const Header = () => {
   return (
     <Navbar
       collapseOnSelect
+      fixed="top"
       expand="lg"
       style={{ backgroundColor: '#4157FF' }}
       variant="dark"
@@ -68,6 +74,14 @@ const Header = () => {
 
             <Nav.Link
               as={Link}
+              to="/profile"
+              className="text-white text-center me-lg-3 border border-top-0 border-start-0 border-end-0"
+            >
+              Profile
+            </Nav.Link>
+
+            <Nav.Link
+              as={Link}
               to="/about"
               className="text-white text-center border border-top-0 border-start-0 border-end-0"
             >
@@ -75,15 +89,18 @@ const Header = () => {
             </Nav.Link>
           </Nav>
           <Nav>
-            <p className="pt-lg-3 me-3 text-white fs-5 mt-4 mt-lg-0">
-              user name's
-            </p>
             <Nav.Link
               as={Link}
-              to="/profile"
-              className="text-white bg-primary text-center pt-lg-3 rounded-pill fs-5"
+              to="/cart"
+              className="text-white position-relative me-lg-4"
             >
-              Profile
+              <FontAwesomeIcon icon={faCartPlus} className="fs-3" />
+              <span className="position-absolute top-0 start-50 bg-info fw-bold rounded-circle px-2 ms-2">
+                {item}
+              </span>
+            </Nav.Link>
+            <Nav.Link as={Link} to="/profile" className="text-white">
+              user name
             </Nav.Link>
           </Nav>
           <Nav className="mt-lg-0 mt-3 ms-4">{logInBtn}</Nav>

@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
 import SingleProduct from '../SingleProduct/SingleProduct';
 
-const Products = ({ allProduct }) => {
+const Products = ({ allProduct, handleCart }) => {
   const { wellness, homeo, eye, dental } = allProduct;
   return (
     <div>
@@ -13,7 +13,11 @@ const Products = ({ allProduct }) => {
           <div className="d-flex flex-wrap justify-content-center">
             {wellness &&
               wellness.map((product) => (
-                <SingleProduct key={product.id} product={product} />
+                <SingleProduct
+                  key={product.id}
+                  product={product}
+                  handleCart={handleCart}
+                />
               ))}
           </div>
         </div>
@@ -25,7 +29,11 @@ const Products = ({ allProduct }) => {
           <div className="d-flex flex-wrap justify-content-center">
             {homeo &&
               homeo.map((product) => (
-                <SingleProduct key={product.id} product={product} />
+                <SingleProduct
+                  key={product.id}
+                  product={product}
+                  handleCart={handleCart}
+                />
               ))}
           </div>
         </div>
@@ -36,7 +44,11 @@ const Products = ({ allProduct }) => {
           <div className="d-flex flex-wrap justify-content-center">
             {eye &&
               eye.map((product) => (
-                <SingleProduct key={product.id} product={product} />
+                <SingleProduct
+                  key={product.id}
+                  product={product}
+                  handleCart={handleCart}
+                />
               ))}
           </div>
         </div>
@@ -47,7 +59,11 @@ const Products = ({ allProduct }) => {
           <div className="d-flex flex-wrap justify-content-center">
             {dental &&
               dental.map((product) => (
-                <SingleProduct key={product.id} product={product} />
+                <SingleProduct
+                  key={product.id}
+                  product={product}
+                  handleCart={handleCart}
+                />
               ))}
           </div>
         </div>
