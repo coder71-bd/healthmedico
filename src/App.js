@@ -25,7 +25,7 @@ const App = () => {
       .then((data) => setAllProduct(data));
   }, []);
 
-  //make a flat array of the fake json
+  //make a flat array of the fake json data
   const makeFlatArr = () => {
     const arr = [];
     for (const product in allProduct) {
@@ -83,8 +83,15 @@ const App = () => {
           <Route exact path="/register">
             <Register />
           </Route>
+
           <Route exact path="/">
             <Home allProduct={allProduct} handleCart={handleCart} />
+          </Route>
+
+          <Route exact path="/single-product/:itemId">
+            {/* <SingleProductDetails allProduct={allProduct} />
+             */}
+            {/* solve the problem later */}
           </Route>
           <Route path="*">
             <NotFound />

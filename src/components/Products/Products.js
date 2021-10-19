@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
 import SingleProduct from '../SingleProduct/SingleProduct';
 
-const Products = ({ allProduct, handleCart }) => {
+const Products = ({ allProduct, handleCart, handleDetailProduct }) => {
   const { wellness, homeo, eye, dental } = allProduct;
   return (
     <div>
@@ -17,6 +17,7 @@ const Products = ({ allProduct, handleCart }) => {
                   key={product.id}
                   product={product}
                   handleCart={handleCart}
+                  handleDetailProduct={handleDetailProduct}
                 />
               ))}
           </div>
@@ -33,6 +34,7 @@ const Products = ({ allProduct, handleCart }) => {
                   key={product.id}
                   product={product}
                   handleCart={handleCart}
+                  handleDetailProduct={handleDetailProduct}
                 />
               ))}
           </div>
@@ -48,6 +50,7 @@ const Products = ({ allProduct, handleCart }) => {
                   key={product.id}
                   product={product}
                   handleCart={handleCart}
+                  handleDetailProduct={handleDetailProduct}
                 />
               ))}
           </div>
@@ -63,6 +66,7 @@ const Products = ({ allProduct, handleCart }) => {
                   key={product.id}
                   product={product}
                   handleCart={handleCart}
+                  handleDetailProduct={handleDetailProduct}
                 />
               ))}
           </div>
