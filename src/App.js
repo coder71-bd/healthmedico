@@ -7,14 +7,16 @@ import Cart from './components/Cart/Cart';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Login from './components/Login/Login';
 import Products from './components/Products/Products';
 import Profile from './components/Profile/Profile';
-import TrackOrder from './components/TrackOrder/TrackOrder';
+import Register from './components/Register/Register';
+import Shipping from './components/Shipping/Shipping';
 
 const App = () => {
   const [allProduct, setAllProduct] = useState({});
   const [cart, setCart] = useState([]);
-  const [item, setItem] = useState(0);
+  const [totalItem, setTotalItem] = useState(0);
 
   // load data from api
   useEffect(() => {
@@ -49,13 +51,13 @@ const App = () => {
       setCart([...cart, addedProducts]);
     }
 
-    setItem(item + 1);
+    setTotalItem(totalItem + 1);
   };
 
   return (
     <div>
       <Router>
-        <Header item={item} />
+        <Header totalItem={totalItem} />
         <Switch>
           <Route exact path="/home">
             <Home allProduct={allProduct} handleCart={handleCart} />
@@ -63,17 +65,23 @@ const App = () => {
           <Route exact path="/products">
             <Products allProduct={allProduct} handleCart={handleCart} />
           </Route>
-          <Route exact path="/track-order">
-            <TrackOrder />
+          <Route exact path="/shipping">
+            <Shipping />
           </Route>
           <Route exact path="/about">
             <About />
           </Route>
           <Route exact path="/cart">
-            <Cart cart={cart} />
+            <Cart cart={cart} totalItem={totalItem} />
           </Route>
           <Route exact path="/profile">
             <Profile />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/register">
+            <Register />
           </Route>
           <Route exact path="/">
             <Home allProduct={allProduct} handleCart={handleCart} />

@@ -8,12 +8,14 @@ import wellness from '../../images/categories/wellness.png';
 const Categories = () => {
   return (
     <Container>
-      <Row>
+      <h3 className="d-3 text-center my-4 text-primary">Our Categories</h3>
+
+      <Row className="mx-auto justify-content-evenly rounded-3">
         {/* wellness */}
         <Col
           md={3}
           xs={6}
-          className="d-flex flex-column justify-content-center align-items-center border border-3 border-secondary"
+          className="d-flex flex-column justify-content-center align-items-center border border-secondary"
           style={{ maxWidth: 200 }}
         >
           <img src={wellness} alt="wellness" />
@@ -24,7 +26,7 @@ const Categories = () => {
         <Col
           md={3}
           xs={6}
-          className="d-flex flex-column justify-content-center align-items-center border border-3 border-secondary"
+          className="d-flex flex-column justify-content-center align-items-center border border-secondary"
           style={{ maxWidth: 200 }}
         >
           <img src={homeo} alt="homeo" />
@@ -35,7 +37,7 @@ const Categories = () => {
         <Col
           md={3}
           xs={6}
-          className="d-flex flex-column justify-content-center align-items-center border border-3 border-secondary"
+          className="d-flex flex-column justify-content-center align-items-center border border-secondary"
           style={{ maxWidth: 200 }}
         >
           <img src={eye} alt="eye" />
@@ -46,7 +48,7 @@ const Categories = () => {
         <Col
           md={3}
           xs={6}
-          className="d-flex flex-column justify-content-center align-items-center border border-3 border-secondary"
+          className="d-flex flex-column justify-content-center align-items-center border border-secondary"
           style={{ maxWidth: 200, height: 200 }}
         >
           <img src={dental} alt="dental" />

@@ -6,7 +6,7 @@ const HomeProducts = ({ allProduct, handleCart }) => {
   const { wellness, homeo, eye, dental } = allProduct;
   return (
     <div>
-      <h3>Our Products</h3>
+      <h3 className="d-1 text-center my-4 text-primary">Our Products</h3>
       <Container className="d-flex flex-wrap">
         {/* wellness products */}
         {wellness &&

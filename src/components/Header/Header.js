@@ -6,11 +6,14 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-const Header = ({ item }) => {
+const Header = ({ totalItem }) => {
+  const history = useHistory();
+
   const handleLogin = () => {
-    console.log('logged in');
+    console.log(history);
+    history.push('/login');
   };
 
   const handleLogOut = () => {
@@ -34,7 +37,7 @@ const Header = ({ item }) => {
   return (
     <Navbar
       collapseOnSelect
-      fixed="top"
+      sticky="top"
       expand="lg"
       style={{ backgroundColor: '#4157FF' }}
       variant="dark"
@@ -66,10 +69,10 @@ const Header = ({ item }) => {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="/track-order"
+              to="/shipping"
               className="text-white text-center me-lg-3 border border-top-0 border-start-0 border-end-0"
             >
-              Track Order
+              Shipping
             </Nav.Link>
 
             <Nav.Link
@@ -96,7 +99,7 @@ const Header = ({ item }) => {
             >
               <FontAwesomeIcon icon={faCartPlus} className="fs-3" />
               <span className="position-absolute top-0 start-50 bg-info fw-bold rounded-circle px-2 ms-2">
-                {item}
+                {totalItem}
               </span>
             </Nav.Link>
             <Nav.Link as={Link} to="/profile" className="text-white">
