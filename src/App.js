@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NotFound } from 'http-errors';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import About from './components/About/About';
 import Cart from './components/Cart/Cart';
@@ -12,19 +12,14 @@ import Products from './components/Products/Products';
 import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
 import Shipping from './components/Shipping/Shipping';
+import SingleProductDetails from './components/SingleProductDetalis/SingleProductDetails';
 import { AuthProvider } from './context/AuthProvider';
+import useProducts from './hooks/useProducts';
 
 const App = () => {
-  const [allProduct, setAllProduct] = useState({});
+  const [allProduct] = useProducts();
   const [cart, setCart] = useState([]);
   const [totalItem, setTotalItem] = useState(0);
-
-  // load data from api
-  useEffect(() => {
-    fetch('./healthmedico.json')
-      .then((res) => res.json())
-      .then((data) => setAllProduct(data));
-  }, []);
 
   //make a flat array of the fake json data
   const makeFlatArr = () => {
@@ -91,9 +86,7 @@ const App = () => {
             </Route>
 
             <Route exact path="/single-product/:itemId">
-              {/* <SingleProductDetails allProduct={allProduct} />
-               */}
-              {/* solve the problem later */}
+              <SingleProductDetails />
             </Route>
             <Route path="*">
               <NotFound />

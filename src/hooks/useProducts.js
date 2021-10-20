@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
 const useProducts = () => {
-  const [products, setProducts] = useState({});
+  const [allProduct, setAllProduct] = useState({});
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/coder71-bd/json/main/fake.json')
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setAllProduct(data));
   }, []);
 
-  return [products, setProducts];
+  return [allProduct, setAllProduct];
 };
 
 export default useProducts;
