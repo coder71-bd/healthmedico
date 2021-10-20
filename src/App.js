@@ -12,6 +12,7 @@ import Products from './components/Products/Products';
 import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
 import Shipping from './components/Shipping/Shipping';
+import { AuthProvider } from './context/AuthProvider';
 
 const App = () => {
   const [allProduct, setAllProduct] = useState({});
@@ -56,49 +57,51 @@ const App = () => {
 
   return (
     <div>
-      <Router>
-        <Header totalItem={totalItem} />
-        <Switch>
-          <Route exact path="/home">
-            <Home allProduct={allProduct} handleCart={handleCart} />
-          </Route>
-          <Route exact path="/products">
-            <Products allProduct={allProduct} handleCart={handleCart} />
-          </Route>
-          <Route exact path="/shipping">
-            <Shipping />
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/cart">
-            <Cart cart={cart} totalItem={totalItem} />
-          </Route>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/register">
-            <Register />
-          </Route>
+      <AuthProvider>
+        <Router>
+          <Header totalItem={totalItem} />
+          <Switch>
+            <Route exact path="/home">
+              <Home allProduct={allProduct} handleCart={handleCart} />
+            </Route>
+            <Route exact path="/products">
+              <Products allProduct={allProduct} handleCart={handleCart} />
+            </Route>
+            <Route exact path="/shipping">
+              <Shipping />
+            </Route>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/cart">
+              <Cart cart={cart} totalItem={totalItem} />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
 
-          <Route exact path="/">
-            <Home allProduct={allProduct} handleCart={handleCart} />
-          </Route>
+            <Route exact path="/">
+              <Home allProduct={allProduct} handleCart={handleCart} />
+            </Route>
 
-          <Route exact path="/single-product/:itemId">
-            {/* <SingleProductDetails allProduct={allProduct} />
-             */}
-            {/* solve the problem later */}
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
+            <Route exact path="/single-product/:itemId">
+              {/* <SingleProductDetails allProduct={allProduct} />
+               */}
+              {/* solve the problem later */}
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+          <Footer />
+        </Router>
+      </AuthProvider>
     </div>
   );
 };

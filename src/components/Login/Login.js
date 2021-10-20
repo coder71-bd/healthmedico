@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
   const {
@@ -9,6 +10,8 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { signInUsingGoogle } = useAuth();
 
   const onSubmit = (data) => console.log(data);
 
@@ -74,7 +77,11 @@ const Login = () => {
 
         <p className="text-center my-2 fw-bold">or</p>
 
-        <Button variant="success" className="text-white w-50 d-block mx-auto">
+        <Button
+          onClick={signInUsingGoogle}
+          variant="success"
+          className="text-white w-50 d-block mx-auto"
+        >
           Login With Google
         </Button>
       </form>
