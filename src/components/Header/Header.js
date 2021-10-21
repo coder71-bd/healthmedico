@@ -7,8 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Header = ({ totalItem }) => {
+  const { user, logout } = useAuth();
+
   const history = useHistory();
 
   const handleLogin = () => {
@@ -17,7 +20,7 @@ const Header = ({ totalItem }) => {
   };
 
   const handleLogOut = () => {
-    console.log('logged out');
+    logout();
   };
 
   const logInBtn = (
@@ -60,6 +63,7 @@ const Header = ({ totalItem }) => {
             >
               Dashboard
             </Nav.Link>
+
             <Nav.Link
               as={Link}
               to="/products"
@@ -91,6 +95,7 @@ const Header = ({ totalItem }) => {
               About us
             </Nav.Link>
           </Nav>
+
           <Nav>
             <Nav.Link
               as={Link}
@@ -102,12 +107,19 @@ const Header = ({ totalItem }) => {
                 {totalItem}
               </span>
             </Nav.Link>
+
+            {/* logged in user name */}
             <Nav.Link as={Link} to="/profile" className="text-white">
-              user name
+              {user.name}
             </Nav.Link>
           </Nav>
-          <Nav className="mt-lg-0 mt-3 ms-4">{logInBtn}</Nav>
-          <Nav className="mt-lg-0 mt-3 ms-4">{logOutBtn}</Nav>
+
+          {/* login logout button toggle system */}
+          {user.email ? (
+            <Nav className="mt-lg-0 mt-3 ms-4">{logInBtn}</Nav>
+          ) : (
+            <Nav className="mt-lg-0 mt-3 ms-4">{logOutBtn}</Nav>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

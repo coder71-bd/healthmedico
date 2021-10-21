@@ -1,9 +1,12 @@
 import {
+  createUserWithEmailAndPassword,
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import initializeAuthentication from '../Firebase/Firebase.init';
@@ -23,6 +26,16 @@ const useFirebase = () => {
     setIsLoading(true); // user trying to log with google
 
     return signInWithPopup(auth, googleProvider);
+  };
+
+  const processSignUp = (email, password) => {
+    //create user info when signing up
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const processEmailSignIn = (email, password) => {
+    // sign in the existing user
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   // change the user state after successfull login
@@ -46,6 +59,13 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false)); // user is now logged out
   };
 
+  //update user profile
+  const updateUserProfile = (name) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+    });
+  };
+
   return {
     logout,
     user,
@@ -54,6 +74,9 @@ const useFirebase = () => {
     error,
     setError,
     signInUsingGoogle,
+    processSignUp,
+    processEmailSignIn,
+    updateUserProfile,
   };
 };
 

@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Products from './components/Products/Products';
 import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
@@ -62,18 +63,18 @@ const App = () => {
             <Route exact path="/products">
               <Products allProduct={allProduct} handleCart={handleCart} />
             </Route>
-            <Route exact path="/shipping">
+            <PrivateRoute exact path="/shipping">
               <Shipping />
-            </Route>
+            </PrivateRoute>
             <Route exact path="/about">
               <About />
             </Route>
             <Route exact path="/cart">
               <Cart cart={cart} totalItem={totalItem} />
             </Route>
-            <Route exact path="/profile">
+            <PrivateRoute exact path="/profile">
               <Profile />
-            </Route>
+            </PrivateRoute>
             <Route exact path="/login">
               <Login />
             </Route>
@@ -85,9 +86,10 @@ const App = () => {
               <Home allProduct={allProduct} handleCart={handleCart} />
             </Route>
 
-            <Route exact path="/single-product/:itemId">
+            <PrivateRoute exact path="/single-product/:itemId">
               <SingleProductDetails />
-            </Route>
+            </PrivateRoute>
+
             <Route path="*">
               <NotFound />
             </Route>

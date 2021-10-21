@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
   const {
@@ -10,7 +11,33 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const { processSignUp, signInUsingGoogle, updateUserProfile, setIsLoading } =
+    useAuth();
+
+  const location = useLocation();
+
+  const history = useHistory();
+
+  const redirect_uri = location.state?.from || '/home';
+
+  const onSubmit = (data) => {
+    processSignUp(data.email, data.password)
+      .then(() => {
+        updateUserProfile(data.name);
+        history.push(redirect_uri);
+        setIsLoading(false);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleGoogleSignUp = () => {
+    signInUsingGoogle()
+      .then(() => {
+        history.push(redirect_uri);
+        setIsLoading(false);
+      })
+      .then((error) => console.log(error));
+  };
 
   return (
     <div style={{ minHeight: 'calc(100vh - 200px)' }}>
@@ -94,7 +121,11 @@ const Register = () => {
 
         <p className="text-center my-2 fw-bold">or</p>
 
-        <Button variant="success" className="text-white w-50 d-block mx-auto">
+        <Button
+          variant="success"
+          className="text-white w-50 d-block mx-auto"
+          onClick={handleGoogleSignUp}
+        >
           Register With Google
         </Button>
       </form>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
@@ -11,9 +11,31 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { signInUsingGoogle } = useAuth();
+  const { signInUsingGoogle, processEmailSignIn, setIsLoading } = useAuth();
 
-  const onSubmit = (data) => console.log(data);
+  const location = useLocation();
+
+  const history = useHistory();
+
+  const redirect_uri = location.state?.from || '/home';
+
+  const onSubmit = (data) => {
+    return processEmailSignIn(data.email, data.password)
+      .then(() => {
+        history.push(redirect_uri);
+        setIsLoading(false);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleGoogleSignIn = () => {
+    signInUsingGoogle()
+      .then(() => {
+        history.push(redirect_uri);
+        setIsLoading(false);
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div style={{ minHeight: 'calc(100vh - 200px)' }}>
@@ -78,7 +100,7 @@ const Login = () => {
         <p className="text-center my-2 fw-bold">or</p>
 
         <Button
-          onClick={signInUsingGoogle}
+          onClick={handleGoogleSignIn}
           variant="success"
           className="text-white w-50 d-block mx-auto"
         >
