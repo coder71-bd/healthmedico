@@ -1,11 +1,14 @@
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPlusSquare,
+  faStar,
+  faStarHalfAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '@restart/ui/esm/Button';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import useProducts from '../../hooks/useProducts';
 
-const SingleProductDetails = () => {
+const SingleProductDetails = ({ handleCart }) => {
   const [allProduct] = useProducts();
   const { itemId } = useParams();
 
@@ -19,9 +22,28 @@ const SingleProductDetails = () => {
 
     return arr.flat();
   };
+
   const detailProduct = makeFlatArr().find((pd) => pd.id === itemId);
 
-  const { name, image, rating, price, detail_desc } = detailProduct;
+  // rating
+  const showRating = (rate = 0) => {
+    const ratingArr = [];
+    for (let i = 0; i < rate; i++) {
+      ratingArr.push(
+        <FontAwesomeIcon className="text-warning" key={i} icon={faStar} />
+      );
+    }
+    for (let i = rate; i <= 5; i++) {
+      ratingArr.push(
+        <FontAwesomeIcon
+          className="text-warning"
+          key={i}
+          icon={faStarHalfAlt}
+        />
+      );
+    }
+    return ratingArr;
+  };
 
   return (
     <Container
@@ -30,30 +52,40 @@ const SingleProductDetails = () => {
     >
       <Row>
         {/* product info with image*/}
-        <Col lg={6} xs={12} className="d-flex justify-content-center">
-          <div>
-            <div className="d-flex justify-content-between align-items-center">
-              <h2 className="d-3">{name}</h2>
-              <h2>{rating}</h2>
-            </div>
-            <div className="bg-primary" style={{ maxWidth: 700 }}>
-              <img className="my-3 rounded-3 w-100" src={image} alt={name} />
-            </div>
-            <div className="d-flex justify-content-between align-items-center">
-              <p className="fw-bold">${price}</p>
-              <Button variant="outline-info">
-                <FontAwesomeIcon icon={faPlusSquare} />
-                <span className="ms-2">add to cart</span>
-              </Button>
-            </div>
+        <Col lg={6} xs={12} style={{ maxWidth: 1000 }}>
+          {/* product name and rating */}
+          <div className="d-flex justify-content-between align-items-center fs-5">
+            <h2>{detailProduct?.name}</h2>
+            <p>{showRating(detailProduct?.rating)}</p>
+          </div>
+
+          {/* product image */}
+          <div className="d-flex justify-content-center">
+            <img
+              style={{ width: '100%', maxWidth: 600 }}
+              className="my-2 rounded-3"
+              src={detailProduct?.image}
+              alt={detailProduct?.name}
+            />
+          </div>
+
+          {/* price and add to cart button */}
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="fw-bold">${detailProduct?.price}</p>
+            <Button variant="outline-info">
+              <FontAwesomeIcon icon={faPlusSquare} />
+              <span className="ms-2" onClick={() => handleCart(itemId)}>
+                add to cart
+              </span>
+            </Button>
           </div>
         </Col>
 
         {/* product detail */}
-        <Col lg={6} xs={12}>
+        <Col lg={6} xs={12} style={{ maxWidth: 1000 }}>
           <div className="w-75 mx-auto">
             <p className="fs-3">Product Detail</p>
-            <p className="mt-3">{detail_desc}</p>
+            <p className="mt-3">{detailProduct?.detail_desc}</p>
           </div>
         </Col>
       </Row>

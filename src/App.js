@@ -60,21 +60,27 @@ const App = () => {
             <Route exact path="/home">
               <Home allProduct={allProduct} handleCart={handleCart} />
             </Route>
+
             <Route exact path="/products">
               <Products allProduct={allProduct} handleCart={handleCart} />
             </Route>
+
             <PrivateRoute exact path="/shipping">
               <Shipping />
             </PrivateRoute>
+
             <Route exact path="/about">
               <About />
             </Route>
+
             <Route exact path="/cart">
               <Cart cart={cart} totalItem={totalItem} />
             </Route>
+
             <PrivateRoute exact path="/profile">
               <Profile />
             </PrivateRoute>
+
             <Route exact path="/login">
               <Login />
             </Route>
@@ -87,7 +93,7 @@ const App = () => {
             </Route>
 
             <PrivateRoute exact path="/single-product/:itemId">
-              <SingleProductDetails />
+              <SingleProductDetails handleCart={handleCart} />
             </PrivateRoute>
 
             <Route path="*">

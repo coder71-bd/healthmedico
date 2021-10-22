@@ -37,6 +37,17 @@ const Header = ({ totalItem }) => {
     </Button>
   );
 
+  let profileName = null;
+  if (user.displayName) {
+    profileName = (
+      <Nav.Link as={Link} to="/profile" className="text-white">
+        {user.displayName}
+      </Nav.Link>
+    );
+  } else {
+    profileName = null;
+  }
+
   return (
     <Navbar
       collapseOnSelect
@@ -109,16 +120,14 @@ const Header = ({ totalItem }) => {
             </Nav.Link>
 
             {/* logged in user name */}
-            <Nav.Link as={Link} to="/profile" className="text-white">
-              {user.name}
-            </Nav.Link>
+            {profileName}
           </Nav>
 
           {/* login logout button toggle system */}
           {user.email ? (
-            <Nav className="mt-lg-0 mt-3 ms-4">{logInBtn}</Nav>
-          ) : (
             <Nav className="mt-lg-0 mt-3 ms-4">{logOutBtn}</Nav>
+          ) : (
+            <Nav className="mt-lg-0 mt-3 ms-4">{logInBtn}</Nav>
           )}
         </Navbar.Collapse>
       </Container>

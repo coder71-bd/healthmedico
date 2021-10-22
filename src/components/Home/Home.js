@@ -3,6 +3,7 @@ import { Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import shop from '../../images/banner/shop.png';
 import Categories from '../Categories/Categories';
+import Companies from '../Companies/Companies';
 import HomeProducts from '../HomeProducts/HomeProducts';
 import './Home.css';
 
@@ -40,6 +41,12 @@ const Home = ({ allProduct, handleCart }) => {
       <Categories />
 
       <HomeProducts allProduct={allProduct} handleCart={handleCart} />
+
+      {/* companies */}
+      <div className="my-3 w-75 mx-auto">
+        <h3 className="text-center">Our Companies</h3>
+        <Companies />
+      </div>
     </div>
   );
 };

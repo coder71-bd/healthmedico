@@ -11,8 +11,14 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const { processSignUp, signInUsingGoogle, updateUserProfile, setIsLoading } =
-    useAuth();
+  const {
+    processSignUp,
+    signInUsingGoogle,
+    updateUserProfile,
+    setIsLoading,
+    setError,
+    error,
+  } = useAuth();
 
   const location = useLocation();
 
@@ -27,7 +33,7 @@ const Register = () => {
         history.push(redirect_uri);
         setIsLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error.message));
   };
 
   const handleGoogleSignUp = () => {
@@ -36,7 +42,7 @@ const Register = () => {
         history.push(redirect_uri);
         setIsLoading(false);
       })
-      .then((error) => console.log(error));
+      .then((error) => setError(error.message));
   };
 
   return (
@@ -113,6 +119,9 @@ const Register = () => {
         <div className="w-75 mx-auto mb-3 mt-2">
           <Link to="/login">Already registerd? Login here.</Link>
         </div>
+
+        {/* show the firebase error */}
+        <div className="text-warning text-center">{error}</div>
 
         <input
           className="btn btn-primary text-white w-50 d-block mx-auto"

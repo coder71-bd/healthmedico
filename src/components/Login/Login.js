@@ -11,7 +11,13 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { signInUsingGoogle, processEmailSignIn, setIsLoading } = useAuth();
+  const {
+    signInUsingGoogle,
+    processEmailSignIn,
+    setIsLoading,
+    setError,
+    error,
+  } = useAuth();
 
   const location = useLocation();
 
@@ -25,7 +31,7 @@ const Login = () => {
         history.push(redirect_uri);
         setIsLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error.message));
   };
 
   const handleGoogleSignIn = () => {
@@ -34,7 +40,7 @@ const Login = () => {
         history.push(redirect_uri);
         setIsLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error.message));
   };
 
   return (
@@ -91,6 +97,9 @@ const Login = () => {
         <div className="w-75 mx-auto mb-3 mt-2">
           <Link to="/register">create a new Account</Link>
         </div>
+
+        {/* show the firebase error */}
+        <div className="text-warning text-center">{error}</div>
 
         <input
           className="btn btn-primary text-white w-50 d-block mx-auto"

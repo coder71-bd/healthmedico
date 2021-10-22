@@ -24,7 +24,7 @@ const Footer = () => {
       </Row>
       <Row className="bg-dark text-white align-items-center">
         <Col>
-          <p className="text-uppercase fw-bold fs-1">HalthMedico</p>
+          <p className="text-uppercase fw-bold fs-1">HealthMedico</p>
         </Col>
         <Col>
           <p>&copy; all rights reserved by HealthMedico</p>
