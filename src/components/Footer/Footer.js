@@ -3,8 +3,8 @@ import { Button, Col, FormControl, InputGroup, Row } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <footer>
-      <Row className="align-items-center bg-primary p-3">
+    <footer style={{ overflow: 'hidden' }}>
+      <Row className="align-items-center bg-info p-3">
         <Col className="fw-bold text-uppercase text-white">
           Sign up for our weekly newsletter
         </Col>
@@ -24,7 +24,7 @@ const Footer = () => {
       </Row>
       <Row className="bg-dark text-white align-items-center">
         <Col>
-          <p className="text-uppercase fw-bold fs-1">HealthMedico</p>
+          <p className="text-uppercase fw-bold fs-1 ms-3">HealthMedico</p>
         </Col>
         <Col>
           <p>&copy; all rights reserved by HealthMedico</p>

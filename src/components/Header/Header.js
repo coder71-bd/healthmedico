@@ -1,7 +1,7 @@
 import {
   faCartPlus,
   faSignInAlt,
-  faSignOutAlt,
+  faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
@@ -15,7 +15,6 @@ const Header = ({ totalItem }) => {
   const history = useHistory();
 
   const handleLogin = () => {
-    console.log(history);
     history.push('/login');
   };
 
