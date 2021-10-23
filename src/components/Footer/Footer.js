@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <footer style={{ overflow: 'hidden' }}>
       <Row className="align-items-center bg-info p-3">
-        <Col className="fw-bold text-uppercase text-white">
+        <Col lg={6} className="fw-bold text-uppercase text-white">
           Sign up for our weekly newsletter
         </Col>
-        <Col>
+        <Col lg={6}>
           <InputGroup>
             <FormControl
               className="border  border-light"
@@ -23,11 +23,15 @@ const Footer = () => {
         </Col>
       </Row>
       <Row className="bg-dark text-white align-items-center">
-        <Col>
-          <p className="text-uppercase fw-bold fs-1 ms-3">HealthMedico</p>
+        <Col lg={6}>
+          <p className="text-center text-uppercase fw-bold fs-1 ms-3">
+            HealthMedico
+          </p>
         </Col>
-        <Col>
-          <p>&copy; all rights reserved by HealthMedico</p>
+        <Col lg={6}>
+          <p className="text-center">
+            &copy; all rights reserved by HealthMedico
+          </p>
         </Col>
       </Row>
     </footer>

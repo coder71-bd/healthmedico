@@ -17,7 +17,12 @@ const SingleProduct = ({ product, handleCart }) => {
 
   return (
     <Card style={{ width: '18rem' }} className="m-3">
-      <Card.Img variant="top" src={image} className="p-1" />
+      <Card.Img
+        variant="top"
+        src={image}
+        className="p-1"
+        style={{ height: 207 }}
+      />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>{short_desc}</Card.Text>

@@ -43,6 +43,10 @@ const Login = () => {
       .catch((error) => setError(error.message));
   };
 
+  const handleError = () => {
+    setError('');
+  };
+
   return (
     <div style={{ minHeight: 'calc(100vh - 200px)' }}>
       <h3 className="d-3 my-3 text-center text-primary fw-bold">Login</h3>
@@ -99,7 +103,9 @@ const Login = () => {
         </div>
 
         {/* show the firebase error */}
-        <div className="text-warning text-center">{error}</div>
+        <div className="text-warning text-center" onBlur={handleError}>
+          {error}
+        </div>
 
         <input
           className="btn btn-primary text-white w-50 d-block mx-auto"

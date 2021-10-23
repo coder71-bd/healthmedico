@@ -1,7 +1,7 @@
 import {
   faPlusSquare,
   faStar,
-  faStarHalfAlt,
+  faStarHalfAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Col, Container, Row } from 'react-bootstrap';
@@ -62,7 +62,7 @@ const SingleProductDetails = ({ handleCart }) => {
           {/* product image */}
           <div className="d-flex justify-content-center">
             <img
-              style={{ width: '100%', maxWidth: 600 }}
+              style={{ width: '100%', maxWidth: 600, maxHeight: 300 }}
               className="my-2 rounded-3"
               src={detailProduct?.image}
               alt={detailProduct?.name}
@@ -71,7 +71,7 @@ const SingleProductDetails = ({ handleCart }) => {
 
           {/* price and add to cart button */}
           <div className="d-flex justify-content-between align-items-center">
-            <p className="fw-bold">${detailProduct?.price}</p>
+            <p className="fw-bold text-primary fs-5">${detailProduct?.price}</p>
             <Button variant="outline-info">
               <FontAwesomeIcon icon={faPlusSquare} />
               <span className="ms-2" onClick={() => handleCart(itemId)}>

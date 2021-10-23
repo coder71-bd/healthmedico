@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 const NotFound = () => {
   return (
@@ -13,7 +14,9 @@ const NotFound = () => {
       <p className="fs-4 text-info">Sorry! we couldn't find this page</p>
       <p>Please go back to home page</p>
       <NavLink to="/home">
-        <Button variant="info text-white">Home</Button>
+        <Button variant="info text-white" className="mb-5">
+          Home
+        </Button>
       </NavLink>
     </section>
   );

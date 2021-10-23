@@ -8,43 +8,30 @@ const Companies = () => {
       <Carousel.Item style={{ maxWidth: 600 }}>
         <img
           className="d-block w-100"
-          src="https://dummyimage.com/128x100.png/5fa2dd/ffffff"
-          alt="First slide"
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Logo_of_Himalaya_-_The_Drug_Company.svg/1200px-Logo_of_Himalaya_-_The_Drug_Company.svg.png"
+          alt="himalaya"
+          style={{ maxHeight: 337 }}
         />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
       </Carousel.Item>
 
       {/* item 2 */}
       <Carousel.Item style={{ maxWidth: 600 }}>
         <img
           className="d-block w-100"
-          src="https://dummyimage.com/128x100.png/5fa2dd/ffffff"
-          alt="Second slide"
+          src="https://www.theindependentbd.com/assets/news_images/Beximco-Pharma3.jpg"
+          alt="Beximco pharma"
+          style={{ maxHeight: 337 }}
         />
-
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
       </Carousel.Item>
 
       {/* item 3 */}
       <Carousel.Item style={{ maxWidth: 600 }}>
         <img
           className="d-block w-100"
-          src="https://dummyimage.com/128x100.png/5fa2dd/ffffff"
-          alt="Third slide"
+          src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i2FkG7wPwgaU/v1/1000x-1.jpg"
+          alt="pfizer"
+          style={{ maxHeight: 337 }}
         />
-
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
   );
