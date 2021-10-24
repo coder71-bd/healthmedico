@@ -1,7 +1,8 @@
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Container, Table } from 'react-bootstrap';
+import { Button, Col, Container, Row, Table } from 'react-bootstrap';
 import { useHistory } from 'react-router';
+import './Cart.css';
 
 const Cart = ({ cart, totalItem }) => {
   const history = useHistory();
@@ -20,21 +21,24 @@ const Cart = ({ cart, totalItem }) => {
   };
 
   return (
-    <Container>
+    <Container
+      className=" d-flex flex-column justify-content-center align-items-center my-3"
+      style={{ minHeight: 'calc(100vh - 200px)' }}
+    >
       <h3 className="text-center my-3">Your Cart</h3>
-      <div className="d-flex flex-wrap justify-content-center">
+      <Row>
         {/* added products */}
-        <div className="me-lg-3">
+
+        <Col className="me-lg-3">
           {cart.map((item) => {
-            const { name, image, short_desc, price, id, quantity } = item;
+            const { name, image, price, id, quantity } = item;
             return (
               <div
                 key={id}
-                className="d-flex align-items-center border my-3 rounded-3 pe-3 shadow"
-                style={{ maxWidth: 700, position: 'relative' }}
+                className="cart-container d-flex mx-1 position-relative align-items-center border my-3 rounded-3 pe-3 shadow-lg"
               >
                 {/* item image */}
-                <div style={{ maxWidth: 500 }}>
+                <div>
                   <img className="img-fluid rounded-3" src={image} alt={name} />
                 </div>
 
@@ -43,7 +47,6 @@ const Cart = ({ cart, totalItem }) => {
                   <div className="d-flex justify-content-between">
                     <div style={{ maxWidth: '95%' }}>
                       <p className="mb-0">{name}</p>
-                      <p className="mt-0">{short_desc}</p>
                     </div>
                     <div>
                       <FontAwesomeIcon
@@ -58,7 +61,7 @@ const Cart = ({ cart, totalItem }) => {
                       />
                     </div>
                   </div>
-                  <div className="d-flex">
+                  <div className="d-flex mt-3">
                     <p className="fst-italic fw-bold">${price}</p>
                     <p className="ms-5">Quantity: {quantity}</p>
                   </div>
@@ -66,10 +69,10 @@ const Cart = ({ cart, totalItem }) => {
               </div>
             );
           })}
-        </div>
+        </Col>
 
         {/* payment */}
-        <div className="mt-3 ms-lg-3" style={{ minWidth: 400 }}>
+        <Col className="mt-3 ms-lg-3">
           <Table striped bordered hover>
             <tbody>
               {/* item quantity */}
@@ -118,8 +121,8 @@ const Cart = ({ cart, totalItem }) => {
               </Button>
             )}
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </Container>
   );
 };

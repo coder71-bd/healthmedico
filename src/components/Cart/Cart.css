@@ -1,0 +1,7 @@
+@media screen and (max-width: 450px) {
+  .cart-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px !important;
+  }
+}

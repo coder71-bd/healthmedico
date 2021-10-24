@@ -8,9 +8,10 @@ import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import './Header.css';
 
 const Header = ({ totalItem }) => {
-  const { user, logout } = useAuth();
+  const { user, logout, userName } = useAuth();
 
   const history = useHistory();
 
@@ -36,17 +37,6 @@ const Header = ({ totalItem }) => {
     </Button>
   );
 
-  let profileName = null;
-  if (user.displayName) {
-    profileName = (
-      <Nav.Link as={Link} to="/profile" className="text-white">
-        {user.displayName}
-      </Nav.Link>
-    );
-  } else {
-    profileName = null;
-  }
-
   return (
     <Navbar
       collapseOnSelect
@@ -69,7 +59,7 @@ const Header = ({ totalItem }) => {
             <Nav.Link
               as={Link}
               to="/home"
-              className="text-white text-center me-lg-3 border border-top-0 border-start-0 border-end-0"
+              className="text-white text-center me-lg-3 "
             >
               Dashboard
             </Nav.Link>
@@ -77,14 +67,14 @@ const Header = ({ totalItem }) => {
             <Nav.Link
               as={Link}
               to="/products"
-              className="text-white text-center me-lg-3 border border-top-0 border-start-0 border-end-0"
+              className="text-white text-center me-lg-3 "
             >
               Products
             </Nav.Link>
             <Nav.Link
               as={Link}
               to="/shipping"
-              className="text-white text-center me-lg-3 border border-top-0 border-start-0 border-end-0"
+              className="text-white text-center me-lg-3 "
             >
               Shipping
             </Nav.Link>
@@ -92,7 +82,7 @@ const Header = ({ totalItem }) => {
             <Nav.Link
               as={Link}
               to="/profile"
-              className="text-white text-center me-lg-3 border border-top-0 border-start-0 border-end-0"
+              className="text-white text-center me-lg-3 "
             >
               Profile
             </Nav.Link>
@@ -100,7 +90,7 @@ const Header = ({ totalItem }) => {
             <Nav.Link
               as={Link}
               to="/about"
-              className="text-white text-center border border-top-0 border-start-0 border-end-0"
+              className="text-white text-center "
             >
               About us
             </Nav.Link>
@@ -112,14 +102,22 @@ const Header = ({ totalItem }) => {
               to="/cart"
               className="text-white position-relative me-lg-4"
             >
-              <FontAwesomeIcon icon={faCartPlus} className="fs-3" />
-              <span className="position-absolute top-0 start-50 bg-info fw-bold rounded-circle px-2 ms-2">
-                {totalItem}
-              </span>
+              <div className="cart mx-auto">
+                <FontAwesomeIcon icon={faCartPlus} className="fs-3" />
+                <span className="position-absolute top-0 start-50 bg-info fw-bold rounded-circle px-2 ms-2">
+                  {totalItem}
+                </span>
+              </div>
             </Nav.Link>
 
             {/* logged in user name */}
-            {profileName}
+            <Nav.Link
+              as={Link}
+              to="/profile"
+              className="text-white text-center"
+            >
+              {user.displayName || userName}
+            </Nav.Link>
           </Nav>
 
           {/* login logout button toggle system */}

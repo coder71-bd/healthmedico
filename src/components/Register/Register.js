@@ -17,6 +17,7 @@ const Register = () => {
     updateUserProfile,
     setIsLoading,
     setError,
+    setUserName,
     error,
   } = useAuth();
 
@@ -27,6 +28,8 @@ const Register = () => {
   const redirect_uri = location.state?.from || '/home';
 
   const onSubmit = (data) => {
+    setUserName(data.name);
+
     processSignUp(data.email, data.password)
       .then(() => {
         updateUserProfile(data.name);

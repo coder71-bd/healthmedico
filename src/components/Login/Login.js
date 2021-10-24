@@ -57,6 +57,7 @@ const Login = () => {
       >
         {/* email of the user */}
         <input
+          onFocus={handleError}
           className="w-75 d-block mx-auto form-control"
           placeholder="Email"
           {...register('email', {
@@ -76,6 +77,7 @@ const Login = () => {
 
         {/* password of the user */}
         <input
+          onFocus={handleError}
           placeholder="password"
           className="mt-3 w-75 mx-auto d-block form-control"
           {...register('password', {
@@ -103,9 +105,7 @@ const Login = () => {
         </div>
 
         {/* show the firebase error */}
-        <div className="text-warning text-center" onBlur={handleError}>
-          {error}
-        </div>
+        <div className="text-warning text-center">{error}</div>
 
         <input
           className="btn btn-primary text-white w-50 d-block mx-auto"

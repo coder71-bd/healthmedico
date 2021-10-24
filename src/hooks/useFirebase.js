@@ -17,6 +17,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true); //user using the login functionality
+  const [userName, setUserName] = useState(''); // firebase header name showing bug fix
 
   const auth = getAuth();
 
@@ -69,10 +70,13 @@ const useFirebase = () => {
   return {
     logout,
     user,
+    setUser,
     isLoading,
     setIsLoading,
     error,
     setError,
+    userName,
+    setUserName,
     signInUsingGoogle,
     processSignUp,
     processEmailSignIn,

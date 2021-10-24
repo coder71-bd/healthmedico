@@ -44,7 +44,7 @@ const Home = ({ allProduct, handleCart }) => {
 
       {/* companies */}
       <div className="my-3 w-75 mx-auto">
-        <h3 className="text-center">Our Partners</h3>
+        <h3 className="text-center text-primary my-3">Our Partners</h3>
         <Companies />
       </div>
     </div>
