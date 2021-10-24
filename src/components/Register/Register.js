@@ -143,6 +143,7 @@ const Register = () => {
           variant="success"
           className="text-white w-50 d-block mx-auto"
           onClick={handleGoogleSignUp}
+          style={{ minWidth: 150 }}
         >
           Register With Google
         </Button>

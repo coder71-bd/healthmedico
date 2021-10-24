@@ -39,14 +39,19 @@ const Cart = ({ cart, totalItem }) => {
               >
                 {/* item image */}
                 <div>
-                  <img className="img-fluid rounded-3" src={image} alt={name} />
+                  <img
+                    className="img-fluid rounded-3"
+                    src={image}
+                    alt={name}
+                    style={{ maxHeight: 300 }}
+                  />
                 </div>
 
                 {/* item info */}
                 <div className="ms-3">
                   <div className="d-flex justify-content-between">
                     <div style={{ maxWidth: '95%' }}>
-                      <p className="mb-0">{name}</p>
+                      <p className="text-primary fw-bold">{name}</p>
                     </div>
                     <div>
                       <FontAwesomeIcon
@@ -73,7 +78,7 @@ const Cart = ({ cart, totalItem }) => {
 
         {/* payment */}
         <Col className="mt-3 ms-lg-3">
-          <Table striped bordered hover>
+          <Table striped bordered hover className="w-100">
             <tbody>
               {/* item quantity */}
               <tr>

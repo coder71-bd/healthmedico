@@ -118,6 +118,7 @@ const Login = () => {
           onClick={handleGoogleSignIn}
           variant="success"
           className="text-white w-50 d-block mx-auto"
+          style={{ minWidth: 150 }}
         >
           Login With Google
         </Button>

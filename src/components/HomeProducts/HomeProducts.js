@@ -7,7 +7,7 @@ const HomeProducts = ({ allProduct, handleCart }) => {
   return (
     <div>
       <h3 className="d-1 text-center my-4 text-primary">Our Products</h3>
-      <Container className="d-flex flex-wrap">
+      <Container className="d-flex flex-wrap justify-content-center">
         {/* wellness products */}
         {wellness &&
           wellness
