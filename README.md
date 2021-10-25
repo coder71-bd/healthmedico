@@ -13,19 +13,10 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
 - [Built With](#built-with)
 - [Features](#features)
 - [pages](#pages)
 - [Contact](#contact)
-
-<!-- OVERVIEW -->
-
-## Overview
-
-<!-- give images link of this website -->
-
-![](./calculator.png)
 
 ### Built With
 
@@ -35,6 +26,8 @@
 - Firebase
 - bootstrap
 - Context API
+- Font-Awesome
+- React Hook Form
 
 ## Features
 
@@ -44,8 +37,8 @@ HealthMedico is a React app created for managing a medical and healthcare store.
 
 - Home: main landing page of the website.
 - Products: containing some products to sell.
-- Track Order: user can see here his/her ordered products situation.
-- About: About the company.
+- Shipping: user will give the shipping information here.
+- About: About HealthMedico.
 - Profile: user profile.
 - 404: A 404 page for non-existing pages.
 - cart: the product which are added to cart can be shown here.

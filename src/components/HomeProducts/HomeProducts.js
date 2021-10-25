@@ -31,6 +31,7 @@ const HomeProducts = ({ allProduct, handleCart }) => {
                 handleCart={handleCart}
               />
             ))}
+
         {/* eye products */}
         {eye &&
           eye
