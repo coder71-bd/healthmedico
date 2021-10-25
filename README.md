@@ -41,10 +41,9 @@ HealthMedico is a React app created for managing a medical and healthcare store.
 - About: About HealthMedico.
 - Profile: user profile.
 - 404: A 404 page for non-existing pages.
-- cart: the product which are added to cart can be shown here.
+- cart: the product which are added to cart will be showed here.
 - login: user can login via this page.
 - Register: user can register via this page.
-- checkout: user will pay money here for his ordered products.
 
 ## Contact
 
